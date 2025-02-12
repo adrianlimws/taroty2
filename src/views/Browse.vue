@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center p-4">
+  <div class="text-center p-4">
     <!-- Search section -->
     <div class="mb-8 max-w-2xl mx-auto">
       <input v-model="searchQuery" type="text" placeholder="Search cards by name, suite, or keywords..."

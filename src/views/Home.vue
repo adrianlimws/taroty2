@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center p-4">
+  <div class="text-center p-4">
     <!-- Question prompt -->
     <p class="text-xl bg-gray-100 p-4 rounded mb-8">"Think of a question before you pick a card."</p>
 

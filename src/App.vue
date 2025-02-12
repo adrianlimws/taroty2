@@ -1,14 +1,13 @@
 <template>
   <div class="min-h-screen bg-white">
-    <div class="px-4">
-      <NavBar />
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
-    </div>
+    <NavBar />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
+
 </template>
 
 <script setup>
