@@ -1,7 +1,10 @@
-var app = new Vue({
-  el: "#app",
-  data: {
-    search: '',
+import { defineStore } from 'pinia'
+
+// Import card images
+const cardImages = import.meta.glob('@/assets/deck/*.jpg', { eager: true })
+
+export const useCardsStore = defineStore('cards', {
+  state: () => ({
     cards: [
       {
         "name": "The Fool",
@@ -784,24 +787,18 @@ var app = new Vue({
         "reversed": "When the reversed Ace of Pentacles appears in a Tarot reading, you may feel hesitant about moving forward with an offer, invitation or opportunity, particularly one that relates to your career, finances or business. You may catch yourself second-guessing the timing or doubting whether you have what it takes to see it through. Don't move forward until you're ready. Assess the feasibility of your idea and its potential outcomes. Perform your due diligence and figure out if this opportunity is meant for you or not.	The Ace of Pentacles reversed may also be a warning that a financial opportunity – a pay raise, a new job, a loan, or a business offer – could fall through unexpectedly or the other party might retract it without explanation. As the saying goes, “Don’t count your chickens before they hatch!” So, if you get an offer, wait until the money is in your bank account before spending it.	Furthermore, the Ace of Pentacles reversed advises you to be very careful with your expenditures. When the card is inverted, the coin looks as though it's about to fall out of the magical hand. Now is not the time to get in over your head or take on any obligations with huge monthly repayments. Do not rely on the promise of a financial opportunity in the future (like a pay raise or a gift) either. Be pragmatic and allow a bit of ‘fat’ in your budgeting in case you are without employment or have a large and unexpected financial outlay. At times, the reversed Ace of Pentacles suggests that you are trying to manifest your goals but keep running into delays and other impediments. If you're having limited success, then you may need to revise your proposed approach. Do you need to realign your goals to something more realistic? Financial or other professional advice may be necessary to help you get back on track. If you are looking to start a new business or take up a new job offer, the reversed Ace of Pentacles warns of a significant risk due to lack of planning and foresight. Do not charge ahead without validating whether the market has a need for your services. Spend a bit more time in the planning stage and give ample consideration to the financial aspects of your new venture."
       }
     ],
-    chosenCard: '',
-    seen: false
-  },
+  }),
 
-  methods: {
-    getCard() {
-      this.seen = !this.seen
-      var chosenCard = Math.floor(Math.random() * this.cards.length);
-      this.chosenCard = this.cards[chosenCard];
-      this.seen = true
-    }
-  },
+  getters: {
+    getCardList: (state) => {
+      return state.cards.map(card => {
+        const imagePath = `/src/${card.image}`
+        const imageModule = cardImages[imagePath]
 
-  computed: {
-    filteredCards() {
-      this.seen = true
-      return this.cards.filter(card => {
-        return card.name.toLowerCase().includes(this.search.toLowerCase())
+        return {
+          ...card,
+          image: imageModule ? imageModule.default : ''
+        }
       })
     }
   }
