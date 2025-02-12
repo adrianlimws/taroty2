@@ -14,7 +14,10 @@
       <div v-if="seen && selectedCard" class="mt-8">
         <div class="card-content">
           <h2 class="text-3xl mb-4">{{ selectedCard.name }}</h2>
-          <img :src="selectedCard.image" :alt="selectedCard.name" class="mx-auto w-64 mb-4">
+
+          <img :src="getImageUrl(selectedCard.image)" :alt="selectedCard.name" class="mx-auto w-64 mb-4"
+            @error="handleImageError">
+
           <div class="text-lg mb-2 max-w-3xl mx-auto">
             <p class="mb-4">{{ selectedCard.description }}</p>
             <div class="text-left">
@@ -41,17 +44,31 @@ const selectedCard = ref(null)
 // Get cards list from store using computed to maintain reactivity
 const cards = computed(() => store.getCardList)
 
+const handleImageError = (e) => {
+  console.error('Image failed to load:', e)
+  if (selectedCard.value) {
+    console.log('Current card:', selectedCard.value)
+    console.log('Image path:', selectedCard.value.image)
+    console.log('Processed image URL:', getImageUrl(selectedCard.value.image))
+  }
+}
+
+// Function to get correct image URL
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return ''
+
+  // Simply prepend a forward slash to ensure path starts from public directory
+  return `/${imagePath}`
+}
+
 const getCard = () => {
-  // Hide current card
   seen.value = false
 
-  // Wait for transition
   setTimeout(() => {
-    // Check if cards are available
     if (cards.value && cards.value.length > 0) {
-      // Select random card
       const randomIndex = Math.floor(Math.random() * cards.value.length)
       selectedCard.value = cards.value[randomIndex]
+      console.log('Selected card:', selectedCard.value)
       seen.value = true
     } else {
       console.error('No cards available in store')

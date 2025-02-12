@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 
 // Import card images
-const cardImages = import.meta.glob('@/assets/deck/*.jpg', { eager: true })
-
 export const useCardsStore = defineStore('cards', {
   state: () => ({
     cards: [
@@ -791,15 +789,9 @@ export const useCardsStore = defineStore('cards', {
 
   getters: {
     getCardList: (state) => {
-      return state.cards.map(card => {
-        const imagePath = `/src/${card.image}`
-        const imageModule = cardImages[imagePath]
-
-        return {
-          ...card,
-          image: imageModule ? imageModule.default : ''
-        }
-      })
+      return state.cards.map(card => ({
+        ...card,
+      }))
     }
   }
 })
