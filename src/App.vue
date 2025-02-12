@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-white">
-    <div class="container mx-auto px-4">
+    <div class="px-4">
       <NavBar />
       <h1 class="text-5xl text-center my-6 font-crimson">Tarot A Day</h1>
       <router-view v-slot="{ Component }">

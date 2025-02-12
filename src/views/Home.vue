@@ -41,7 +41,6 @@ const store = useCardsStore()
 const seen = ref(false)
 const selectedCard = ref(null)
 
-// Get cards list from store using computed to maintain reactivity
 const cards = computed(() => store.getCardList)
 
 const handleImageError = (e) => {
@@ -53,11 +52,8 @@ const handleImageError = (e) => {
   }
 }
 
-// Function to get correct image URL
 const getImageUrl = (imagePath) => {
   if (!imagePath) return ''
-
-  // Simply prepend a forward slash to ensure path starts from public directory
   return `/${imagePath}`
 }
 
