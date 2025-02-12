@@ -92,7 +92,4 @@ const filteredCards = computed(() => {
 .fade-leave-to {
   opacity: 0;
 }
-
-/* Import Crimson Text font */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 </style>
