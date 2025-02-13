@@ -1,11 +1,11 @@
 <template>
-  <div class="text-center p-4">
+  <div class="text-center p-4 max-w-7xl mx-auto">
     <!-- Search section -->
-    <div class="mb-8 max-w-2xl mx-auto">
+    <div class="mb-8 max-w-2xl mx-auto px-4">
       <input v-model="searchQuery" type="text" placeholder="Search cards by name, suite, or keywords..."
         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
 
-      <div class="mt-4 flex justify-center gap-4">
+      <div class="mt-4 flex flex-wrap justify-center gap-4">
         <label class="inline-flex items-center">
           <input type="checkbox" v-model="searchFilters.name" class="form-checkbox h-5 w-5 text-yellow-600">
           <span class="ml-2">Name</span>
@@ -30,7 +30,7 @@
 
     <!-- Cards grid -->
     <transition-group name="fade" tag="div"
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto container">
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto container px-4">
       <div v-for="card in filteredCards" :key="card.name"
         class="card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border-0.5">
         <img :src="card.image" :alt="card.name" class="w-full h-auto object-cover">

@@ -7,9 +7,15 @@
       </transition>
     </router-view>
   </div>
-
 </template>
 
 <script setup>
 import NavBar from './components/Navbar.vue'
 </script>
+
+<style>
+body {
+  top: 0 !important;
+  position: static !important;
+}
+</style>
