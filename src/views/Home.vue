@@ -1,18 +1,18 @@
 <template>
   <div class="text-center p-4">
     <!-- Question prompt -->
-    <p class="text-xl bg-gray-100 p-4 rounded mb-8">"Think of a question before you pick a card."</p>
+    <p class="text-xl bg-yellow-100 p-4 rounded mb-8">"Think of a question before you pick a card."</p>
 
     <!-- Card button -->
     <button @click="getCard"
-      class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg text-xl w-64 mx-auto block mb-8">
+      class="bg-yellow-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg text-xl w-64 mx-auto block mb-8">
       Pick a Card
     </button>
 
     <!-- Card display -->
     <Transition name="fade">
       <div v-if="seen && selectedCard" class="mt-8">
-        <div class="card-content">
+        <div class="card-content border-0.5 bg-gray">
           <h2 class="text-3xl mb-4">{{ selectedCard.name }}</h2>
 
           <img :src="getImageUrl(selectedCard.image)" :alt="selectedCard.name" class="mx-auto w-64 mb-4"

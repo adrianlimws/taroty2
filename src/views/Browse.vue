@@ -3,21 +3,21 @@
     <!-- Search section -->
     <div class="mb-8 max-w-2xl mx-auto">
       <input v-model="searchQuery" type="text" placeholder="Search cards by name, suite, or keywords..."
-        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
 
       <div class="mt-4 flex justify-center gap-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" v-model="searchFilters.name" class="form-checkbox h-5 w-5 text-blue-600">
+          <input type="checkbox" v-model="searchFilters.name" class="form-checkbox h-5 w-5 text-yellow-600">
           <span class="ml-2">Name</span>
         </label>
 
         <label class="inline-flex items-center">
-          <input type="checkbox" v-model="searchFilters.suite" class="form-checkbox h-5 w-5 text-blue-600">
+          <input type="checkbox" v-model="searchFilters.suite" class="form-checkbox h-5 w-5 text-yellow-600">
           <span class="ml-2">Suite</span>
         </label>
 
         <label class="inline-flex items-center">
-          <input type="checkbox" v-model="searchFilters.keywords" class="form-checkbox h-5 w-5 text-blue-600">
+          <input type="checkbox" v-model="searchFilters.keywords" class="form-checkbox h-5 w-5 text-yellow-600">
           <span class="ml-2">Keywords</span>
         </label>
       </div>
@@ -29,9 +29,10 @@
     </p>
 
     <!-- Cards grid -->
-    <transition-group name="fade" tag="div" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <transition-group name="fade" tag="div"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto container">
       <div v-for="card in filteredCards" :key="card.name"
-        class="card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        class="card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border-0.5">
         <img :src="card.image" :alt="card.name" class="w-full h-auto object-cover">
         <div class="p-4">
           <h5 class="text-xl font-bold mb-2">{{ card.name }}</h5>

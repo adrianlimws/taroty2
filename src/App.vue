@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-yellow-50">
     <NavBar />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
